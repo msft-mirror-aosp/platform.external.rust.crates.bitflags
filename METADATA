@@ -1,0 +1,16 @@
+name: "bitflags"
+description:
+    "A Rust macro to generate structures which behave like a set of bitflags."
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://crates.io/crates/bitflags"
+  }
+  url {
+    type: GIT
+    value: "https://github.com/bitflags/bitflags"
+  }
+  version: "1.2.1"
+  last_upgrade_date { year: 2019 month: 12 day: 12 }
+}
