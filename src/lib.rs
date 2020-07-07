@@ -253,7 +253,7 @@
 #![no_std]
 #![doc(html_root_url = "https://docs.rs/bitflags/1.2.1")]
 
-#[cfg(test)]
+// ANDROID: Unconditionally use std to allow building as a dylib
 #[macro_use]
 extern crate std;
 
