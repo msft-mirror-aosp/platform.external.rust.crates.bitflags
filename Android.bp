@@ -3,6 +3,8 @@
 rust_defaults {
     name: "bitflags_defaults",
     crate_name: "bitflags",
+    // has rustc warnings
+    srcs: ["src/lib.rs"],
     test_suites: ["general-tests"],
     auto_gen_config: true,
     edition: "2015",
@@ -17,15 +19,11 @@ rust_defaults {
 rust_test_host {
     name: "bitflags_host_test_src_lib",
     defaults: ["bitflags_defaults"],
-    // has rustc warnings
-    srcs: ["src/lib.rs"],
 }
 
 rust_test {
     name: "bitflags_device_test_src_lib",
     defaults: ["bitflags_defaults"],
-    // has rustc warnings
-    srcs: ["src/lib.rs"],
 }
 
 rust_library {
