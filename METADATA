@@ -1,5 +1,5 @@
 name: "bitflags"
-description: "A Rust macro to generate structures which behave like a set of bitflags."
+description: "A macro to generate structures which behave like bitflags."
 third_party {
   url {
     type: HOMEPAGE
