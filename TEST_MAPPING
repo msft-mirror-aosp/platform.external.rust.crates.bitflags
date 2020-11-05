@@ -2,11 +2,18 @@
 {
   "presubmit": [
     {
-      "name": "bitflags_host_test_src_lib",
-      "host": true
+      "host": true,
+      "name": "bitflags_host_test_src_lib"
     },
     {
       "name": "bitflags_device_test_src_lib"
+    },
+    {
+      "host": true,
+      "name": "libsqlite3-sys_host_test_src_lib"
+    },
+    {
+      "name": "libsqlite3-sys_device_test_src_lib"
     }
   ]
 }
