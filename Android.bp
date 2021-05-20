@@ -73,6 +73,7 @@ rust_library {
     cfgs: ["bitflags_const_fn"],
     apex_available: [
         "//apex_available:platform",
+        "com.android.compos",
         "com.android.virt",
     ],
 }
