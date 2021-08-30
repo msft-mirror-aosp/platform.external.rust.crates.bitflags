@@ -38,6 +38,9 @@
       "name": "libsqlite3-sys_device_test_src_lib"
     },
     {
+      "name": "libsqlite3_bindgen_test"
+    },
+    {
       "name": "microdroid_manager_test"
     },
     {
