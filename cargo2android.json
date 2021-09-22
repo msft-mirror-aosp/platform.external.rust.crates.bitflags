@@ -4,8 +4,13 @@
     "com.android.compos",
     "com.android.virt"
   ],
-  "dependencies": true,
+  "dependency-blocklist": [
+    "trybuild"
+  ],
   "device": true,
   "run": true,
-  "tests": true
+  "tests": true,
+  "test-blocklist": [
+    "tests/compile.rs"
+  ]
 }
