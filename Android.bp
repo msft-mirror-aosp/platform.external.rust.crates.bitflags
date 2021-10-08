@@ -38,20 +38,30 @@ license {
 }
 
 rust_defaults {
-    name: "bitflags_defaults",
+    name: "bitflags_test_defaults",
     crate_name: "bitflags",
     // has rustc warnings
     srcs: ["src/lib.rs"],
+    cargo_env_compat: true,
+    cargo_pkg_version: "1.3.2",
     test_suites: ["general-tests"],
     auto_gen_config: true,
-    edition: "2015",
+    edition: "2018",
     features: ["default"],
-    cfgs: ["bitflags_const_fn"],
+    rustlibs: [
+        "libserde",
+        "libserde_json",
+        "libwalkdir",
+    ],
+    proc_macros: [
+        "librustversion",
+        "libserde_derive",
+    ],
 }
 
 rust_test_host {
     name: "bitflags_host_test_src_lib",
-    defaults: ["bitflags_defaults"],
+    defaults: ["bitflags_test_defaults"],
     test_options: {
         unit_test: true,
     },
@@ -59,7 +69,43 @@ rust_test_host {
 
 rust_test {
     name: "bitflags_device_test_src_lib",
-    defaults: ["bitflags_defaults"],
+    defaults: ["bitflags_test_defaults"],
+}
+
+rust_defaults {
+    name: "bitflags_test_defaults_bitflags",
+    crate_name: "bitflags",
+    // has rustc warnings
+    srcs: ["tests/basic.rs"],
+    cargo_env_compat: true,
+    cargo_pkg_version: "1.3.2",
+    test_suites: ["general-tests"],
+    auto_gen_config: true,
+    edition: "2018",
+    features: ["default"],
+    rustlibs: [
+        "libbitflags",
+        "libserde",
+        "libserde_json",
+        "libwalkdir",
+    ],
+    proc_macros: [
+        "librustversion",
+        "libserde_derive",
+    ],
+}
+
+rust_test_host {
+    name: "bitflags_host_test_tests_basic",
+    defaults: ["bitflags_test_defaults_bitflags"],
+    test_options: {
+        unit_test: true,
+    },
+}
+
+rust_test {
+    name: "bitflags_device_test_tests_basic",
+    defaults: ["bitflags_test_defaults_bitflags"],
 }
 
 rust_library {
@@ -67,10 +113,11 @@ rust_library {
     // has rustc warnings
     host_supported: true,
     crate_name: "bitflags",
+    cargo_env_compat: true,
+    cargo_pkg_version: "1.3.2",
     srcs: ["src/lib.rs"],
-    edition: "2015",
+    edition: "2018",
     features: ["default"],
-    cfgs: ["bitflags_const_fn"],
     apex_available: [
         "//apex_available:platform",
         "com.android.compos",
