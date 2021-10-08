@@ -1,0 +1,15 @@
+diff --git a/src/lib.rs b/src/lib.rs
+index 935e432..36c0699 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -278,6 +278,10 @@
+ #![cfg_attr(not(test), no_std)]
+ #![doc(html_root_url = "https://docs.rs/bitflags/1.3.2")]
+ 
++// ANDROID: Unconditionally use std to allow building as a dylib
++#[macro_use]
++extern crate std;
++
+ #[doc(hidden)]
+ pub extern crate core as _core;
+ 
