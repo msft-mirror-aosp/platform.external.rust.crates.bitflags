@@ -8,6 +8,7 @@
     "trybuild"
   ],
   "device": true,
+  "vendor_available": true,
   "run": true,
   "tests": true,
   "test-blocklist": [
