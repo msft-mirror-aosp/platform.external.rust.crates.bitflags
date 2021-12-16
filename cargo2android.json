@@ -8,10 +8,10 @@
     "trybuild"
   ],
   "device": true,
-  "vendor_available": true,
   "run": true,
-  "tests": true,
   "test-blocklist": [
     "tests/compile.rs"
-  ]
+  ],
+  "tests": true,
+  "vendor-available": true
 }
