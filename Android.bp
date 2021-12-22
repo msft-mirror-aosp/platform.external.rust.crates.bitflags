@@ -102,8 +102,10 @@ rust_library {
     features: ["default"],
     apex_available: [
         "//apex_available:platform",
+        "com.android.bluetooth",
         "com.android.compos",
         "com.android.virt",
     ],
     vendor_available: true,
+    min_sdk_version: "29",
 }
