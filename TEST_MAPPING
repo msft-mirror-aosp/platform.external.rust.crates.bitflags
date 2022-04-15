@@ -37,6 +37,21 @@
       "name": "bitflags_test_tests_basic"
     },
     {
+      "name": "diced_open_dice_cbor_test"
+    },
+    {
+      "name": "diced_sample_inputs_test"
+    },
+    {
+      "name": "diced_test"
+    },
+    {
+      "name": "diced_utils_test"
+    },
+    {
+      "name": "diced_vendor_test"
+    },
+    {
       "name": "keystore2_crypto_test_rust"
     },
     {
@@ -56,9 +71,6 @@
     },
     {
       "name": "microdroid_manager_test"
-    },
-    {
-      "name": "open_then_run_module"
     },
     {
       "name": "virtualizationservice_device_test"
@@ -81,6 +93,21 @@
       "name": "bitflags_test_tests_basic"
     },
     {
+      "name": "diced_open_dice_cbor_test"
+    },
+    {
+      "name": "diced_sample_inputs_test"
+    },
+    {
+      "name": "diced_test"
+    },
+    {
+      "name": "diced_utils_test"
+    },
+    {
+      "name": "diced_vendor_test"
+    },
+    {
       "name": "keystore2_crypto_test_rust"
     },
     {
@@ -100,9 +127,6 @@
     },
     {
       "name": "microdroid_manager_test"
-    },
-    {
-      "name": "open_then_run_module"
     },
     {
       "name": "virtualizationservice_device_test"
