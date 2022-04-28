@@ -275,12 +275,9 @@
 //!
 //! Users should generally avoid defining a flag with a value of zero.
 
-#![cfg_attr(not(test), no_std)]
+// ANDROID: Use std to allow building as a dylib.
+#![cfg_attr(not(any(test, android_dylib)), no_std)]
 #![doc(html_root_url = "https://docs.rs/bitflags/1.3.2")]
-
-// ANDROID: Unconditionally use std to allow building as a dylib
-#[macro_use]
-extern crate std;
 
 #[doc(hidden)]
 pub extern crate core as _core;
