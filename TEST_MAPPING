@@ -5,6 +5,9 @@
       "path": "external/rust/crates/base64"
     },
     {
+      "path": "external/rust/crates/gdbstub_arch"
+    },
+    {
       "path": "external/rust/crates/libsqlite3-sys"
     },
     {
@@ -20,7 +23,13 @@
       "path": "external/rust/crates/unicode-xid"
     }
   ],
-  "presubmit": [
+  "postsubmit": [
+    {
+      "name": "VtsAidlDiceDemoteTargetTest"
+    },
+    {
+      "name": "VtsAidlDiceTargetTest"
+    },
     {
       "name": "ZipFuseTest"
     },
@@ -52,7 +61,13 @@
       "name": "diced_vendor_test"
     },
     {
+      "name": "keystore2_client_tests"
+    },
+    {
       "name": "keystore2_crypto_test_rust"
+    },
+    {
+      "name": "keystore2_legacy_blobs_test"
     },
     {
       "name": "keystore2_selinux_concurrency_test"
@@ -68,6 +83,98 @@
     },
     {
       "name": "legacykeystore_test"
+    },
+    {
+      "name": "libapkverify.integration_test"
+    },
+    {
+      "name": "libapkverify.test"
+    },
+    {
+      "name": "libidsig.test"
+    },
+    {
+      "name": "libtombstoned_client_rust_test"
+    },
+    {
+      "name": "microdroid_manager_test"
+    },
+    {
+      "name": "virtualizationservice_device_test"
+    }
+  ],
+  "presubmit": [
+    {
+      "name": "VtsAidlDiceDemoteTargetTest"
+    },
+    {
+      "name": "VtsAidlDiceTargetTest"
+    },
+    {
+      "name": "ZipFuseTest"
+    },
+    {
+      "name": "apkdmverity.test"
+    },
+    {
+      "name": "authfs_device_test_src_lib"
+    },
+    {
+      "name": "bitflags_test_src_lib"
+    },
+    {
+      "name": "bitflags_test_tests_basic"
+    },
+    {
+      "name": "diced_open_dice_cbor_test"
+    },
+    {
+      "name": "diced_sample_inputs_test"
+    },
+    {
+      "name": "diced_test"
+    },
+    {
+      "name": "diced_utils_test"
+    },
+    {
+      "name": "diced_vendor_test"
+    },
+    {
+      "name": "keystore2_client_tests"
+    },
+    {
+      "name": "keystore2_crypto_test_rust"
+    },
+    {
+      "name": "keystore2_legacy_blobs_test"
+    },
+    {
+      "name": "keystore2_selinux_concurrency_test"
+    },
+    {
+      "name": "keystore2_test"
+    },
+    {
+      "name": "keystore2_test_utils_test"
+    },
+    {
+      "name": "keystore2_vintf_test"
+    },
+    {
+      "name": "legacykeystore_test"
+    },
+    {
+      "name": "libapkverify.integration_test"
+    },
+    {
+      "name": "libapkverify.test"
+    },
+    {
+      "name": "libidsig.test"
+    },
+    {
+      "name": "libtombstoned_client_rust_test"
     },
     {
       "name": "microdroid_manager_test"
@@ -78,6 +185,12 @@
   ],
   "presubmit-rust": [
     {
+      "name": "VtsAidlDiceDemoteTargetTest"
+    },
+    {
+      "name": "VtsAidlDiceTargetTest"
+    },
+    {
       "name": "ZipFuseTest"
     },
     {
@@ -108,7 +221,13 @@
       "name": "diced_vendor_test"
     },
     {
+      "name": "keystore2_client_tests"
+    },
+    {
       "name": "keystore2_crypto_test_rust"
+    },
+    {
+      "name": "keystore2_legacy_blobs_test"
     },
     {
       "name": "keystore2_selinux_concurrency_test"
@@ -124,6 +243,18 @@
     },
     {
       "name": "legacykeystore_test"
+    },
+    {
+      "name": "libapkverify.integration_test"
+    },
+    {
+      "name": "libapkverify.test"
+    },
+    {
+      "name": "libidsig.test"
+    },
+    {
+      "name": "libtombstoned_client_rust_test"
     },
     {
       "name": "microdroid_manager_test"
