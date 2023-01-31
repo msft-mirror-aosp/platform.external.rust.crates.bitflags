@@ -2,9 +2,6 @@
 {
   "imports": [
     {
-      "path": "external/rust/crates/aarch64-paging"
-    },
-    {
       "path": "external/rust/crates/base64"
     },
     {
@@ -30,244 +27,67 @@
     },
     {
       "path": "external/rust/crates/virtio-drivers"
+    },
+    {
+      "path": "packages/modules/Virtualization/apkdmverity"
+    },
+    {
+      "path": "packages/modules/Virtualization/authfs"
+    },
+    {
+      "path": "packages/modules/Virtualization/avmd"
+    },
+    {
+      "path": "packages/modules/Virtualization/encryptedstore"
+    },
+    {
+      "path": "packages/modules/Virtualization/libs/apkverify"
+    },
+    {
+      "path": "packages/modules/Virtualization/libs/capabilities"
+    },
+    {
+      "path": "packages/modules/Virtualization/libs/devicemapper"
+    },
+    {
+      "path": "packages/modules/Virtualization/microdroid_manager"
+    },
+    {
+      "path": "packages/modules/Virtualization/virtualizationmanager"
+    },
+    {
+      "path": "packages/modules/Virtualization/vm"
+    },
+    {
+      "path": "packages/modules/Virtualization/zipfuse"
+    },
+    {
+      "path": "system/security/diced"
+    },
+    {
+      "path": "system/security/keystore2"
+    },
+    {
+      "path": "system/security/keystore2/legacykeystore"
+    },
+    {
+      "path": "system/security/keystore2/src/crypto"
     }
   ],
   "presubmit": [
     {
-      "name": "VtsAidlDiceDemoteTargetTest"
-    },
-    {
-      "name": "VtsAidlDiceTargetTest"
-    },
-    {
-      "name": "ZipFuseTest"
-    },
-    {
-      "name": "apkdmverity.test"
-    },
-    {
-      "name": "authfs_device_test_src_lib"
-    },
-    {
-      "name": "avmdtool.test"
-    },
-    {
-      "name": "avmdtool_tests"
-    },
-    {
       "name": "bitflags_test_src_lib"
     },
     {
       "name": "bitflags_test_tests_basic"
-    },
-    {
-      "name": "bluetooth_with_facades.test"
-    },
-    {
-      "name": "compos_verify.test"
-    },
-    {
-      "name": "composd_cmd.test"
-    },
-    {
-      "name": "diced_open_dice_cbor_test"
-    },
-    {
-      "name": "diced_sample_inputs_test"
-    },
-    {
-      "name": "diced_test"
-    },
-    {
-      "name": "diced_utils_test"
-    },
-    {
-      "name": "diced_vendor_test"
-    },
-    {
-      "name": "encryptedstore.test"
-    },
-    {
-      "name": "fd_server.test"
-    },
-    {
-      "name": "keystore2_client_tests"
-    },
-    {
-      "name": "keystore2_crypto_test_rust"
-    },
-    {
-      "name": "keystore2_legacy_blobs_test"
-    },
-    {
-      "name": "keystore2_selinux_concurrency_test"
-    },
-    {
-      "name": "keystore2_test"
-    },
-    {
-      "name": "keystore2_test_utils_test"
-    },
-    {
-      "name": "keystore2_vintf_test"
-    },
-    {
-      "name": "legacykeystore_test"
-    },
-    {
-      "name": "libapkverify.integration_test"
-    },
-    {
-      "name": "libapkverify.test"
-    },
-    {
-      "name": "libcap_rust.test"
-    },
-    {
-      "name": "libdm_rust.test"
-    },
-    {
-      "name": "libpvmfw_avb.integration_test"
-    },
-    {
-      "name": "libtombstoned_client_rust_test"
-    },
-    {
-      "name": "microdroid_manager_test"
-    },
-    {
-      "name": "open_then_run.test"
-    },
-    {
-      "name": "rialto_test"
-    },
-    {
-      "name": "virtualizationmanager_device_test"
-    },
-    {
-      "name": "vm.test"
-    },
-    {
-      "name": "vmbase_example.integration_test"
     }
   ],
   "presubmit-rust": [
     {
-      "name": "VtsAidlDiceDemoteTargetTest"
-    },
-    {
-      "name": "VtsAidlDiceTargetTest"
-    },
-    {
-      "name": "ZipFuseTest"
-    },
-    {
-      "name": "apkdmverity.test"
-    },
-    {
-      "name": "authfs_device_test_src_lib"
-    },
-    {
-      "name": "avmdtool.test"
-    },
-    {
-      "name": "avmdtool_tests"
-    },
-    {
       "name": "bitflags_test_src_lib"
     },
     {
       "name": "bitflags_test_tests_basic"
-    },
-    {
-      "name": "bluetooth_with_facades.test"
-    },
-    {
-      "name": "compos_verify.test"
-    },
-    {
-      "name": "composd_cmd.test"
-    },
-    {
-      "name": "diced_open_dice_cbor_test"
-    },
-    {
-      "name": "diced_sample_inputs_test"
-    },
-    {
-      "name": "diced_test"
-    },
-    {
-      "name": "diced_utils_test"
-    },
-    {
-      "name": "diced_vendor_test"
-    },
-    {
-      "name": "encryptedstore.test"
-    },
-    {
-      "name": "fd_server.test"
-    },
-    {
-      "name": "keystore2_client_tests"
-    },
-    {
-      "name": "keystore2_crypto_test_rust"
-    },
-    {
-      "name": "keystore2_legacy_blobs_test"
-    },
-    {
-      "name": "keystore2_selinux_concurrency_test"
-    },
-    {
-      "name": "keystore2_test"
-    },
-    {
-      "name": "keystore2_test_utils_test"
-    },
-    {
-      "name": "keystore2_vintf_test"
-    },
-    {
-      "name": "legacykeystore_test"
-    },
-    {
-      "name": "libapkverify.integration_test"
-    },
-    {
-      "name": "libapkverify.test"
-    },
-    {
-      "name": "libcap_rust.test"
-    },
-    {
-      "name": "libdm_rust.test"
-    },
-    {
-      "name": "libpvmfw_avb.integration_test"
-    },
-    {
-      "name": "libtombstoned_client_rust_test"
-    },
-    {
-      "name": "microdroid_manager_test"
-    },
-    {
-      "name": "open_then_run.test"
-    },
-    {
-      "name": "rialto_test"
-    },
-    {
-      "name": "virtualizationmanager_device_test"
-    },
-    {
-      "name": "vm.test"
-    },
-    {
-      "name": "vmbase_example.integration_test"
     }
   ]
 }
