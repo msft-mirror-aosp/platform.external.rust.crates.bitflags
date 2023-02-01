@@ -102,7 +102,7 @@ rust_library {
     features: ["default"],
     apex_available: [
         "//apex_available:platform",
-        "com.android.bluetooth",
+        "com.android.btservices",
         "com.android.compos",
         "com.android.virt",
     ],
