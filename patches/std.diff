@@ -1,14 +1,14 @@
 diff --git a/src/lib.rs b/src/lib.rs
-index d28fd87..35eabca 100644
+index 935e432..7e87795 100644
 --- a/src/lib.rs
 +++ b/src/lib.rs
-@@ -420,7 +420,8 @@
- //! For details on exactly what's generated for it, see the [`Field0`](example_generated/struct.Field0.html)
- //! example docs.
+@@ -275,7 +275,8 @@
+ //!
+ //! Users should generally avoid defining a flag with a value of zero.
  
--#![cfg_attr(not(any(feature = "std", test)), no_std)]
+-#![cfg_attr(not(test), no_std)]
 +// ANDROID: Use std to allow building as a dylib.
-+#![cfg_attr(not(any(feature = "std", test, android_dylib)), no_std)]
- #![cfg_attr(not(test), forbid(unsafe_code))]
++#![cfg_attr(not(any(test, android_dylib)), no_std)]
+ #![doc(html_root_url = "https://docs.rs/bitflags/1.3.2")]
  
- #![doc(html_root_url = "https://docs.rs/bitflags/2.2.1")]
+ #[doc(hidden)]
