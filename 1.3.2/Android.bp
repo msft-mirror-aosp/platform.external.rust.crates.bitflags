@@ -99,9 +99,7 @@ rust_library {
     features: ["default"],
     apex_available: [
         "//apex_available:platform",
-        "com.android.btservices",
-        "com.android.compos",
-        "com.android.virt",
+        "//apex_available:anyapex",
     ],
     product_available: true,
     vendor_available: true,
