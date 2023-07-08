@@ -74,6 +74,20 @@
       "path": "system/security/keystore2/src/crypto"
     }
   ],
-  "presubmit": [],
-  "presubmit-rust": []
+  "presubmit": [
+    {
+      "name": "bitflags_test_src_lib-1.3.2"
+    },
+    {
+      "name": "bitflags_test_tests_basic-1.3.2"
+    }
+  ],
+  "presubmit-rust": [
+    {
+      "name": "bitflags_test_src_lib-1.3.2"
+    },
+    {
+      "name": "bitflags_test_tests_basic-1.3.2"
+    }
+  ]
 }
