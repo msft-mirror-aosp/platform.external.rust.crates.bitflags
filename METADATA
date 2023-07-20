@@ -11,13 +11,13 @@ third_party {
   }
   url {
     type: ARCHIVE
-    value: "https://static.crates.io/crates/bitflags/bitflags-2.2.1.crate"
+    value: "https://static.crates.io/crates/bitflags/bitflags-2.3.2.crate"
   }
-  version: "2.2.1"
+  version: "2.3.2"
   license_type: NOTICE
   last_upgrade_date {
     year: 2023
-    month: 4
-    day: 26
+    month: 6
+    day: 13
   }
 }
