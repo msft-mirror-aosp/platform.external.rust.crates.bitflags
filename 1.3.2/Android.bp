@@ -25,7 +25,7 @@ package {
 // Please consider removing redundant or irrelevant files from 'license_text:'.
 // See: http://go/android-license-faq
 license {
-    name: "external_rust_crates_bitflags_license",
+    name: "external_rust_crates_bitflags_license-1.3.2",
     visibility: [":__subpackages__"],
     license_kinds: [
         "SPDX-license-identifier-Apache-2.0",
@@ -37,14 +37,66 @@ license {
     ],
 }
 
-rust_library {
-    name: "libbitflags",
+rust_test {
+    name: "bitflags_test_src_lib-1.3.2",
     host_supported: true,
     crate_name: "bitflags",
     cargo_env_compat: true,
-    cargo_pkg_version: "2.3.2",
+    cargo_pkg_version: "1.3.2",
     srcs: ["src/lib.rs"],
-    edition: "2021",
+    test_suites: ["general-tests"],
+    auto_gen_config: true,
+    test_options: {
+        unit_test: true,
+    },
+    edition: "2018",
+    features: ["default"],
+    rustlibs: [
+        "libserde",
+        "libserde_json",
+        "libwalkdir",
+    ],
+    proc_macros: [
+        "librustversion",
+        "libserde_derive",
+    ],
+}
+
+rust_test {
+    name: "bitflags_test_tests_basic-1.3.2",
+    host_supported: true,
+    crate_name: "bitflags",
+    cargo_env_compat: true,
+    cargo_pkg_version: "1.3.2",
+    srcs: ["tests/basic.rs"],
+    test_suites: ["general-tests"],
+    auto_gen_config: true,
+    test_options: {
+        unit_test: true,
+    },
+    edition: "2018",
+    features: ["default"],
+    rustlibs: [
+        "libbitflags-1.3.2",
+        "libserde",
+        "libserde_json",
+        "libwalkdir",
+    ],
+    proc_macros: [
+        "librustversion",
+        "libserde_derive",
+    ],
+}
+
+rust_library {
+    name: "libbitflags-1.3.2",
+    host_supported: true,
+    crate_name: "bitflags",
+    cargo_env_compat: true,
+    cargo_pkg_version: "1.3.2",
+    srcs: ["src/lib.rs"],
+    edition: "2018",
+    features: ["default"],
     apex_available: [
         "//apex_available:platform",
         "//apex_available:anyapex",
