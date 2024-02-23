@@ -6,7 +6,7 @@
 /// Declare the `bitflags`-facing bitflags struct.
 ///
 /// This type is part of the `bitflags` crate's public API, but not part of the user's.
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 macro_rules! __declare_internal_bitflags {
     (
@@ -25,14 +25,14 @@ macro_rules! __declare_internal_bitflags {
 ///
 /// Methods and trait implementations can be freely added here without breaking end-users.
 /// If we want to expose new functionality to `#[derive]`, this is the place to do it.
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 macro_rules! __impl_internal_bitflags {
     (
         $InternalBitFlags:ident: $T:ty, $PublicBitFlags:ident {
             $(
-                $(#[$inner:ident $($args:tt)*])*
-                const $Flag:tt = $value:expr;
+                $(#[$attr:ident $($args:tt)*])*
+                $Flag:ident = $value:expr;
             )*
         }
     ) => {
@@ -56,7 +56,7 @@ macro_rules! __impl_internal_bitflags {
                 if self.is_empty() {
                     // If no flags are set then write an empty hex flag to avoid
                     // writing an empty string. In some contexts, like serialization,
-                    // an empty string is preferable, but it may be unexpected in
+                    // an empty string is preferrable, but it may be unexpected in
                     // others for a format not to produce any output.
                     //
                     // We can remove this `0x0` and remain compatible with `FromStr`,
@@ -97,20 +97,16 @@ macro_rules! __impl_internal_bitflags {
 
         // The internal flags type offers a similar API to the public one
 
-        $crate::__impl_public_bitflags! {
+        __impl_public_bitflags! {
             $InternalBitFlags: $T, $PublicBitFlags {
                 $(
-                    $(#[$inner $($args)*])*
-                    const $Flag = $value;
+                    $(#[$attr $($args)*])*
+                    $Flag;
                 )*
             }
         }
 
-        $crate::__impl_public_bitflags_ops! {
-            $InternalBitFlags
-        }
-
-        $crate::__impl_public_bitflags_iter! {
+        __impl_public_bitflags_iter! {
             $InternalBitFlags: $T, $PublicBitFlags
         }
 

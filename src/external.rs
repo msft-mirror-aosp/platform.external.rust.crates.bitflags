@@ -14,15 +14,15 @@ Next, re-export the library from the `__private` module here.
 Next, define a macro like so:
 
 ```rust
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 #[cfg(feature = "serde")]
 macro_rules! __impl_external_bitflags_my_library {
     (
         $InternalBitFlags:ident: $T:ty, $PublicBitFlags:ident {
             $(
-                $(#[$inner:ident $($args:tt)*])*
-                const $Flag:tt;
+                $(#[$attr:ident $($args:tt)*])*
+                $Flag:ident;
             )*
         }
     ) => {
@@ -30,15 +30,15 @@ macro_rules! __impl_external_bitflags_my_library {
     };
 }
 
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 #[cfg(not(feature = "my_library"))]
 macro_rules! __impl_external_bitflags_my_library {
     (
         $InternalBitFlags:ident: $T:ty, $PublicBitFlags:ident {
             $(
-                $(#[$inner:ident $($args:tt)*])*
-                const $Flag:tt;
+                $(#[$attr:ident $($args:tt)*])*
+                $Flag:ident;
             )*
         }
     ) => {};
@@ -57,8 +57,8 @@ Now, we add our macro call to the `__impl_external_bitflags` macro body:
 __impl_external_bitflags_my_library! {
     $InternalBitFlags: $T, $PublicBitFlags {
         $(
-            $(#[$inner $($args)*])*
-            const $Flag;
+            $(#[$attr $($args)*])*
+            $Flag;
         )*
     }
 }
@@ -77,14 +77,14 @@ pub(crate) mod __private {
 }
 
 /// Implements traits from external libraries for the internal bitflags type.
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 macro_rules! __impl_external_bitflags {
     (
         $InternalBitFlags:ident: $T:ty, $PublicBitFlags:ident {
             $(
-                $(#[$inner:ident $($args:tt)*])*
-                const $Flag:tt;
+                $(#[$attr:ident $($args:tt)*])*
+                $Flag:ident;
             )*
         }
     ) => {
@@ -92,29 +92,29 @@ macro_rules! __impl_external_bitflags {
         // Use `serde` as an example: generate code when the feature is available,
         // and a no-op when it isn't
 
-        $crate::__impl_external_bitflags_serde! {
+        __impl_external_bitflags_serde! {
             $InternalBitFlags: $T, $PublicBitFlags {
                 $(
-                    $(#[$inner $($args)*])*
-                    const $Flag;
+                    $(#[$attr $($args)*])*
+                    $Flag;
                 )*
             }
         }
 
-        $crate::__impl_external_bitflags_arbitrary! {
+        __impl_external_bitflags_arbitrary! {
             $InternalBitFlags: $T, $PublicBitFlags {
                 $(
-                    $(#[$inner $($args)*])*
-                    const $Flag;
+                    $(#[$attr $($args)*])*
+                    $Flag;
                 )*
             }
         }
 
-        $crate::__impl_external_bitflags_bytemuck! {
+        __impl_external_bitflags_bytemuck! {
             $InternalBitFlags: $T, $PublicBitFlags {
                 $(
-                    $(#[$inner $($args)*])*
-                    const $Flag;
+                    $(#[$attr $($args)*])*
+                    $Flag;
                 )*
             }
         }
@@ -125,15 +125,15 @@ macro_rules! __impl_external_bitflags {
 pub mod serde;
 
 /// Implement `Serialize` and `Deserialize` for the internal bitflags type.
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 #[cfg(feature = "serde")]
 macro_rules! __impl_external_bitflags_serde {
     (
         $InternalBitFlags:ident: $T:ty, $PublicBitFlags:ident {
             $(
-                $(#[$inner:ident $($args:tt)*])*
-                const $Flag:tt;
+                $(#[$attr:ident $($args:tt)*])*
+                $Flag:ident;
             )*
         }
     ) => {
@@ -153,7 +153,9 @@ macro_rules! __impl_external_bitflags_serde {
             fn deserialize<D: $crate::__private::serde::Deserializer<'de>>(
                 deserializer: D,
             ) -> $crate::__private::core::result::Result<Self, D::Error> {
-                let flags: $PublicBitFlags = $crate::serde::deserialize(deserializer)?;
+                let flags: $PublicBitFlags = $crate::serde::deserialize(
+                    deserializer,
+                )?;
 
                 Ok(flags.0)
             }
@@ -161,15 +163,15 @@ macro_rules! __impl_external_bitflags_serde {
     };
 }
 
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 #[cfg(not(feature = "serde"))]
 macro_rules! __impl_external_bitflags_serde {
     (
         $InternalBitFlags:ident: $T:ty, $PublicBitFlags:ident {
             $(
-                $(#[$inner:ident $($args:tt)*])*
-                const $Flag:tt;
+                $(#[$attr:ident $($args:tt)*])*
+                $Flag:ident;
             )*
         }
     ) => {};
@@ -182,15 +184,15 @@ pub mod arbitrary;
 mod bytemuck;
 
 /// Implement `Arbitrary` for the internal bitflags type.
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 #[cfg(feature = "arbitrary")]
 macro_rules! __impl_external_bitflags_arbitrary {
     (
             $InternalBitFlags:ident: $T:ty, $PublicBitFlags:ident {
                 $(
-                    $(#[$inner:ident $($args:tt)*])*
-                    const $Flag:tt;
+                    $(#[$attr:ident $($args:tt)*])*
+                    $Flag:ident;
                 )*
             }
     ) => {
@@ -204,58 +206,62 @@ macro_rules! __impl_external_bitflags_arbitrary {
     };
 }
 
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 #[cfg(not(feature = "arbitrary"))]
 macro_rules! __impl_external_bitflags_arbitrary {
     (
         $InternalBitFlags:ident: $T:ty, $PublicBitFlags:ident {
             $(
-                $(#[$inner:ident $($args:tt)*])*
-                const $Flag:tt;
+                $(#[$attr:ident $($args:tt)*])*
+                $Flag:ident;
             )*
         }
     ) => {};
 }
 
 /// Implement `Pod` and `Zeroable` for the internal bitflags type.
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 #[cfg(feature = "bytemuck")]
 macro_rules! __impl_external_bitflags_bytemuck {
     (
         $InternalBitFlags:ident: $T:ty, $PublicBitFlags:ident {
             $(
-                $(#[$inner:ident $($args:tt)*])*
-                const $Flag:tt;
+                $(#[$attr:ident $($args:tt)*])*
+                $Flag:ident;
             )*
         }
     ) => {
         // SAFETY: $InternalBitFlags is guaranteed to have the same ABI as $T,
         // and $T implements Pod
-        unsafe impl $crate::__private::bytemuck::Pod for $InternalBitFlags where
-            $T: $crate::__private::bytemuck::Pod
+        unsafe impl $crate::__private::bytemuck::Pod for $InternalBitFlags
+        where
+            $T: $crate::__private::bytemuck::Pod,
         {
+
         }
 
         // SAFETY: $InternalBitFlags is guaranteed to have the same ABI as $T,
         // and $T implements Zeroable
-        unsafe impl $crate::__private::bytemuck::Zeroable for $InternalBitFlags where
-            $T: $crate::__private::bytemuck::Zeroable
+        unsafe impl $crate::__private::bytemuck::Zeroable for $InternalBitFlags
+        where
+            $T: $crate::__private::bytemuck::Zeroable,
         {
+
         }
     };
 }
 
-#[macro_export]
+#[macro_export(local_inner_macros)]
 #[doc(hidden)]
 #[cfg(not(feature = "bytemuck"))]
 macro_rules! __impl_external_bitflags_bytemuck {
     (
         $InternalBitFlags:ident: $T:ty, $PublicBitFlags:ident {
             $(
-                $(#[$inner:ident $($args:tt)*])*
-                const $Flag:tt;
+                $(#[$attr:ident $($args:tt)*])*
+                $Flag:ident;
             )*
         }
     ) => {};
