@@ -45,7 +45,7 @@ rust_test {
     crate_name: "bitflags",
     cargo_env_compat: true,
     cargo_pkg_version: "1.3.2",
-    srcs: ["src/lib.rs"],
+    crate_root: "src/lib.rs",
     test_suites: ["general-tests"],
     auto_gen_config: true,
     test_options: {
@@ -70,7 +70,7 @@ rust_test {
     crate_name: "basic",
     cargo_env_compat: true,
     cargo_pkg_version: "1.3.2",
-    srcs: ["tests/basic.rs"],
+    crate_root: "tests/basic.rs",
     test_suites: ["general-tests"],
     auto_gen_config: true,
     test_options: {
@@ -96,7 +96,7 @@ rust_library {
     crate_name: "bitflags",
     cargo_env_compat: true,
     cargo_pkg_version: "1.3.2",
-    srcs: ["src/lib.rs"],
+    crate_root: "src/lib.rs",
     edition: "2018",
     features: ["default"],
     apex_available: [
