@@ -3,7 +3,6 @@
 
 package {
     default_applicable_licenses: ["external_rust_crates_bitflags_license"],
-    default_team: "trendy_team_android_rust",
 }
 
 license {
@@ -28,10 +27,4 @@ rust_library {
     product_available: true,
     vendor_available: true,
     min_sdk_version: "29",
-}
-
-dirgroup {
-    name: "trusty_dirgroup_external_rust_crates_bitflags",
-    visibility: ["//trusty/vendor/google/aosp/scripts"],
-    dirs: ["."],
 }
