@@ -4,8 +4,10 @@
     "bitflags": {
       "dep_blocklist": [
         "libtrybuild"
-      ]
+      ],
+      "rulesmk_patch": "patches/rules.mk.diff"
     }
   },
-  "run_cargo": false
+  "run_cargo": false,
+  "generate_rulesmk": true
 }
